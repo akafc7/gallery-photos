@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
-    background-color: #27282F;
-    color: #FFF;
+    background-color: #27282f;
+    color: #fff;
     min-height: 100vh;
 `;
 
@@ -17,4 +17,13 @@ export const Header = styled.h1`
     padding: 0;
     text-align: center;
     margin-bottom: 30px;
-`
+`;
+
+export const ScreenWarning = styled.div`
+    text-align: center;
+
+    .emoji {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+`;
