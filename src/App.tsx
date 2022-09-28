@@ -10,13 +10,15 @@ const App = () => {
     const [photos, setPhotos] = useState<Photo[]>([]);
 
     useEffect(() => {
+        getPhotos();
+    }, []);
+
         const getPhotos = async () => {
             setLoading(true);
             setPhotos(await Photos.getAll());
             setLoading(false);
         };
-        getPhotos();
-    }, []);
+    
 
     const handleFormSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -36,6 +38,11 @@ const App = () => {
                 setPhotos(newPhotoList);
             }
         }
+    };
+
+    const handleDeleteClick = async (name: string) => {
+        await Photos.deletePhoto(name);
+        getPhotos();
     };
 
     return (
@@ -63,6 +70,7 @@ const App = () => {
                                 key={index}
                                 url={item.url}
                                 name={item.name}
+                                onDelete={handleDeleteClick}
                             />
                         ))}
                     </C.PhotoList>
